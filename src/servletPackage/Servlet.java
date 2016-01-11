@@ -17,11 +17,16 @@ public class Servlet extends HttpServlet implements javax.servlet.Servlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		System.out.println("Is this html?");
 		PrintWriter writer = response.getWriter();
+		response.setContentType("text/html");
+
 		writer.println("This is <b>bold</b>!");
 	}
 
