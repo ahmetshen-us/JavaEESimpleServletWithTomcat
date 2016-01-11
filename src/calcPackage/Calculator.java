@@ -17,12 +17,16 @@ public class Calculator extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		PrintWriter writer = response.getWriter();
 		String firstNumber = request.getParameter("firstNumber");
 		String secondNumber = request.getParameter("secondNumber");
+		response.setContentType("text/html");
 		int sum = Integer.parseInt(firstNumber) + Integer.parseInt(secondNumber);
 		writer.println("The sum of " + firstNumber + " and " + secondNumber + " is:  " + sum);
 	}
