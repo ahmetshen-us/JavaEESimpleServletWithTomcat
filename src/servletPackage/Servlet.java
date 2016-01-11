@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Servlet
  */
-@WebServlet(description = "This is a servlet", urlPatterns = { "/Servlet" })
+@WebServlet(description = "This is a sample servlet", urlPatterns = { "/Servlet" })
 public class Servlet extends HttpServlet implements javax.servlet.Servlet {
 	private static final long serialVersionUID = 1L;
 
@@ -23,11 +23,12 @@ public class Servlet extends HttpServlet implements javax.servlet.Servlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("Is this html?");
+		// TODO Auto-generated method stub
+		System.out.println("Test");
+		String searchTerm = request.getParameter("searchTerm");
 		PrintWriter writer = response.getWriter();
 		response.setContentType("text/html");
-
-		writer.println("This is <b>bold</b>!");
+		writer.println("You searched for..." + searchTerm);
 	}
 
 }
