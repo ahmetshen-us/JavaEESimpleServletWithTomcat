@@ -12,9 +12,24 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Servlet
  */
-@WebServlet(description = "This is a sample servlet", urlPatterns = { "/Servlet" })
+// @ServletSecurity(@HttpConstraint rolesAllowed={"admin", "guest"})
+@WebServlet(description = "This is a servlet", urlPatterns = { "/Servlet" })
 public class Servlet extends HttpServlet implements javax.servlet.Servlet {
 	private static final long serialVersionUID = 1L;
+
+	private int count = 0;
+
+	protected synchronized void increment() {
+		count++;
+	}
+
+	protected synchronized void decrement() {
+		count--;
+	}
+
+	protected synchronized int getCount() {
+		return count;
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -23,11 +38,9 @@ public class Servlet extends HttpServlet implements javax.servlet.Servlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		System.out.println("Test");
-		String searchTerm = request.getParameter("searchTerm");
+		System.out.println("Is this html?");
 		PrintWriter writer = response.getWriter();
-		response.setContentType("text/html");
+		String searchTerm = request.getParameter("searchTerm");
 		writer.println("You searched for..." + searchTerm);
 	}
 
